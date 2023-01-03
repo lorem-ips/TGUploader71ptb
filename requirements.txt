@@ -7,4 +7,4 @@ mega.py
 requests_toolbelt
 telethon
 tenacity
-python-telegram-bot
+python-telegram-bot==13.15
