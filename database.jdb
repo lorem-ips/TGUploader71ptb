@@ -1,0 +1,1 @@
+lorem_ips={'dir': '', 'cloudtype': 'moodle', 'moodle_host': 'https://aula.uclv.edu.cu/', 'moodle_repo_id': 5, 'moodle_user': 'grst', 'moodle_password': 'Storage-2021', 'isadmin': 1, 'zips': 10, 'uploadtype': 'draft', 'proxy': '', 'tokenize': 0}
