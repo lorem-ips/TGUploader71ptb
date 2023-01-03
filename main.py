@@ -746,7 +746,8 @@ def downloadFile2(downloader,filename,currentBits,totalBits,speed,time,args):
         msg.edit_text(downloadingInfo)
     except Exception as ex:
         # print(str(ex))
-        traceback.print_exception(ex)
+        # traceback.print_exception(ex)
+        traceback.print_exc()
     pass
 
 
@@ -779,7 +780,8 @@ def uploadFile2(filename,currentBits,totalBits,speed,time,args):
         msg.reply_text(downloadingInfo)
     except Exception as ex:
         # print(str(ex))
-        traceback.print_exception(ex)
+        # traceback.print_exception(ex)
+        traceback.print_exc()
     pass
 
 
@@ -874,7 +876,8 @@ def processUploadFiles2(filename,filesize,files, msg, context, thread=None,jdb=N
         return None
     except Exception as ex:
         # msg.edit_text(f'❌Error {str(ex)}❌')
-        traceback.print_exception(ex)
+        # traceback.print_exception(ex)
+        traceback.print_exc()
         msg.reply_text(f'❌Error {str(ex)}❌')
 
 
