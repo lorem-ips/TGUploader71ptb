@@ -954,7 +954,7 @@ def upload(update: Update, context: CallbackContext):
 
 
 def main():
-    PORT = int(os.environ.get('PORT', 8443))
+    PORT = int(os.environ.get('PORT', 80))
     WEBHOOK_URL = os.environ.get('WEBHOOK_URL')
     updater = Updater(bot_token)
 
@@ -970,8 +970,6 @@ def main():
     dispatcher.add_handler(CommandHandler('noproxy', noproxy))
     dispatcher.add_handler(CommandHandler('uptype', uptype))
     dispatcher.add_handler(MessageHandler(Filters.entity('url'), upload))
-
-    print(f'{WEBHOOK_URL}{bot_token}')
 
     # Production only
     updater.start_webhook(listen="0.0.0.0",
