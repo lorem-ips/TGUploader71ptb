@@ -971,6 +971,8 @@ def main():
     dispatcher.add_handler(CommandHandler('uptype', uptype))
     dispatcher.add_handler(MessageHandler(Filters.entity('url'), upload))
 
+    print(f'{WEBHOOK_URL}{bot_token}')
+
     # Production only
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
