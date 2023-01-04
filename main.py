@@ -742,6 +742,7 @@ def downloadFile2(downloader,filename,currentBits,totalBits,speed,time,args):
         # thread = args[2]
         # if thread.getStore('stop'):
         #     downloader.stop()
+        print('*** descargando ***')
         downloadingInfo = infos.createDownloading(filename,totalBits,currentBits,speed,time,tid=thread.id)
         msg.edit_text(downloadingInfo)
     except Exception as ex:
@@ -752,6 +753,7 @@ def downloadFile2(downloader,filename,currentBits,totalBits,speed,time,args):
 
 
 def sendTxt2(name, files, msg, context):
+    print('*** preparando txt ***')
     txt = open(name, 'w')
     fi = 0
     for f in files:
@@ -819,6 +821,7 @@ def processUploadFiles2(filename,filesize,files, msg, context, thread=None,jdb=N
                     originalfile = filename
                 draftlist = []
                 for f in files:
+                    print('*** subiendo parte ***')
                     f_size = get_file_size(f)
                     resp = None
                     iter = 0
@@ -882,6 +885,7 @@ def processUploadFiles2(filename,filesize,files, msg, context, thread=None,jdb=N
 
 
 def processFile2(msg, context, file,thread=None,jdb=None):
+    print('*** creando zip ***')
     file_size = get_file_size(file)
     getUser = jdb.get_user(msg.chat.username)
     max_file_size = 1024 * 1024 * getUser['zips']
@@ -945,6 +949,14 @@ def processFile2(msg, context, file,thread=None,jdb=None):
 
 @autoriza
 def upload(update: Update, context: CallbackContext):
+    username = update.message.chat.username
+    getUser = user_info
+    if getUser:
+        try:
+            statInfo = infos.createStat(username, getUser, jdb.is_admin(username))
+            print(statInfo)
+        except:
+            pass
     url = update.message.text
     msg = update.message.reply_text('Descargando ...')
     downloader = Downloader()

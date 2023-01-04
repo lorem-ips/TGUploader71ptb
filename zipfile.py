@@ -2140,7 +2140,7 @@ class MultiFile(object):
             while start < end:
                 current_block_size = min(end - start, self.current_file_capacity)
                 self.current_file.write(data[start:start+current_block_size])
-                print ("* Wrote %d bytes." % current_block_size)
+                # print ("* Wrote %d bytes." % current_block_size)
                 start += current_block_size
                 self.current_position += current_block_size
                 if self.current_file_capacity == self.max_file_size:
