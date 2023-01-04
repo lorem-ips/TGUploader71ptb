@@ -776,8 +776,8 @@ def uploadFile2(filename,currentBits,totalBits,speed,time,args):
         originalfile = args[2]
         thread = args[3]
         downloadingInfo = infos.createUploading(filename,totalBits,currentBits,speed,time,originalfile)
-        # msg.edit_text(downloadingInfo)
-        msg.reply_text(downloadingInfo)
+        msg.edit_text(downloadingInfo)
+        # msg.reply_text(downloadingInfo)
     except Exception as ex:
         # print(str(ex))
         # traceback.print_exception(ex)
