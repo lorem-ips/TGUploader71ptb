@@ -788,7 +788,7 @@ def uploadFile2(filename,currentBits,totalBits,speed,time,args):
 def processUploadFiles2(filename,filesize,files, msg, context, thread=None,jdb=None):
     try:
         # msg.edit_text('🤜Preparando Para Subir☁...')
-        msg.reply_text('🤜Preparando Para Subir☁...')
+        msg.edit_text('🤜Preparando Para Subir☁...')
         evidence = None
         fileid = None
         # user_info = jdb.get_user(msg.sender.username)
@@ -856,7 +856,7 @@ def processUploadFiles2(filename,filesize,files, msg, context, thread=None,jdb=N
             if user_info['tokenize']!=0:
                tokenize = True
             # msg.edit_text('🤜Subiendo ☁ Espere Mientras... 😄')
-            msg.reply_text('🤜Subiendo ☁ Espere Mientras... 😄')
+            msg.edit_text('🤜Subiendo ☁ Espere Mientras... 😄')
             host = user_info['moodle_host']
             user = user_info['moodle_user']
             passw = user_info['moodle_password']
@@ -891,7 +891,7 @@ def processFile2(msg, context, file,thread=None,jdb=None):
     if file_size > max_file_size:
         compresingInfo = infos.createCompresing(file,file_size,max_file_size)
         # msg.edit_text(compresingInfo)
-        msg.reply_text(compresingInfo)
+        msg.edit_text(compresingInfo)
         zipname = str(file).split('.')[0] + createID()
         mult_file = zipfile.MultiFile(zipname,max_file_size)
         zip = zipfile.ZipFile(mult_file,  mode='w', compression=zipfile.ZIP_DEFLATED)
@@ -906,8 +906,8 @@ def processFile2(msg, context, file,thread=None,jdb=None):
     else:
         client = processUploadFiles2(file,file_size,[file],msg,context,jdb=jdb)
         file_upload_count = 1
-    # msg.edit_text('🤜Preparando Archivo📄...')
-    msg.reply_text('🤜Preparando Archivo📄...')
+    msg.edit_text('🤜Preparando Archivo📄...')
+    # msg.reply_text('🤜Preparando Archivo📄...')
     evidname = ''
     files = []
     if client:
@@ -934,7 +934,7 @@ def processFile2(msg, context, file,thread=None,jdb=None):
         # context.bot.deleteMessage(msg.chat_id, msg.message_id)
         finishInfo = infos.createFinishUploading(file,file_size,max_file_size,file_upload_count,file_upload_count,findex)
         filesInfo = infos.createFileMsg(file,files)
-        msg.reply_text(finishInfo+'\n'+filesInfo, parse_mode='html')
+        msg.edit_text(finishInfo+'\n'+filesInfo, parse_mode='html')
         if len(files)>0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             sendTxt2(txtname, files, msg, context)
